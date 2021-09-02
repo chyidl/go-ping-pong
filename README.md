@@ -1,7 +1,28 @@
 # Golang Ping-Pong service By Docker
 > A simple Go server/microservice example
 
-  - Includes a multi-stage Dockerfile, which actually is a good example of how to build Go binaries for production releases.
-  - Has functional tests for application's business requirements with proper isolation between tests using
-  - Has a CI pipeline using GitHub Actions to run functional tests in independent containers.
-  - Has a CD pipeline using GitHub Actions to publish to Docker Hub.
+
+## How to
+```
+# Smoke test the application
+ubuntu in go-ping-pong at 3BPlus on  main via 🐹 v1.16.6 on 🐳 v20.10.8
+➜ go run main.go
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.5.0
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+⇨ http server started on [::]:8080
+
+# In a new terminal, run curl
+ubuntu in ~ at 3BPlus
+➜ curl http://localhost:8080/
+Hello, World!%
+ubuntu in ~ at 3BPlus
+➜ curl http://localhost:8080/ping
+{"Status":"OK","Data":"pong"}
+```
