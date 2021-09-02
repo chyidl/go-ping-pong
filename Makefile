@@ -11,8 +11,24 @@ GOBIN 	:= 	$(shell echo ${GOBIN} 	| cut -d':' -f1)
 GOPATH 	:=  $(shell echo $(GOPATH) 	| cut -d':' -f1)
 BIN 	:= 	""
 
-image:
-	docker build -t ${IMAGE_NAME}:${VERSION} -f Dockerfile . \
-	&& docker push ${IMAGE_NAME}:${VERSION}
+amd64:
+	# AMD64
+	docker build --build-arg ARCH=amd64/ \
+		-t ${IMAGE_NAME}:${VERSION}-amd64 -f Dockerfile . \
+	&& docker push ${IMAGE_NAME}:${VERSION}-amd64
 
-.PHONY: image
+arm32:
+	# ARM32 V7
+	docker build --build-arg ARCH=arm32v7/ \
+		-t ${IMAGE_NAME}:{VERSION}-arm32v7 -f Dockerfile . \
+	&& docker push ${IMAGE_NAME}:${VERSION}-arm32v7
+
+arm64:
+	# ARM64 V8
+	docker build --build-arg ARCH=arm64v8/ \
+		-t ${IMAGE_NAME}:{VERSION}-arm64v8 -f Dockerfile . \
+	&& docker push ${IMAGE_NAME}:{VERSION}-arm64v8
+
+image: amd64 arm32 arm64
+
+.PHONY: image amd64 arm32 arm64
