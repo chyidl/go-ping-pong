@@ -31,4 +31,10 @@ arm64:
 
 image: amd64 arm32 arm64
 
-.PHONY: image amd64 arm32 arm64
+buildx:
+	docker buildx build \
+		--push \
+		--platform linux/arm/v7,linux/arm64/v8,linux/amd64 \ 
+		--tag ${IMAGE_NAME}:${VERSION} .
+
+.PHONY: image amd64 arm32 arm64 buildx
