@@ -5,6 +5,13 @@
 ## How to
 ```
 # Smoke test the application
+
+# (Using this method)
+$ git clone git@github.com:chyidl/go-ping-pong.git
+$ cd go-ping-pong
+$ go run main.go
+
+# (Or this another) Be careful!!! this image build for linux/arm64
 ubuntu in go-ping-pong at 3BPlus on  main via 🐹 v1.16.6 on 🐳 v20.10.8
 ➜ docker run -p 127.0.0.1:8080:8080/tcp chyiyaqing/go-ping-pong:v0.0.1
 
