@@ -2,6 +2,8 @@
 
 FROM golang:1.16-alpine
 
+ENV GOPROXY=https://goproxy.cn,direct
+
 # This instructs Docker to use this directory as the default destination for all subsequent commands
 WORKDIR /app
 
